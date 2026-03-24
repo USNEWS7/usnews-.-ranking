@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>U.S. News Education - 2026 Best Global Universities Rankings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.5; }
+        :root { --usn-blue: #003b6f; --usn-light-blue: #0077b6; --usn-gold: #ffb81c; --usn-border: #e2e8f0; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .top-bar { background-color: var(--usn-blue); color: white; padding: 8px 0; font-size: 0.8rem; }
+        .navbar { background-color: white; border-bottom: 1px solid var(--usn-border); position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 16px 24px; }
+        .logo h1 { font-size: 1.6rem; font-weight: 800; color: var(--usn-blue); }
+        .logo span { font-weight: 400; color: var(--usn-light-blue); }
+        .nav-links a { margin-left: 28px; text-decoration: none; font-weight: 600; color: #1e293b; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--usn-blue); border-bottom: 2px solid var(--usn-blue); padding-bottom: 4px; }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .nav-links a { margin: 0 12px; font-size: 0.9rem; } }
+        .hero { background: linear-gradient(135deg, #002b54 0%, #005a9c 100%); color: white; padding: 60px 0; text-align: center; }
+        .hero h2 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+        .card { background: white; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; border: 1px solid var(--usn-border); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .rank-badge { background-color: var(--usn-gold); color: #1e293b; font-weight: 800; padding: 4px 12px; border-radius: 40px; font-size: 0.8rem; display: inline-block; }
+        .rank-table { width: 100%; border-collapse: collapse; }
+        .rank-table th, .rank-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--usn-border); }
+        .rank-table th { background-color: #f1f5f9; font-weight: 700; }
+        .rank-table tr:hover { background-color: #f8fafc; cursor: pointer; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 32px; }
+        .search-box input { flex: 1; padding: 14px 18px; border: 1px solid var(--usn-border); border-radius: 60px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: var(--usn-light-blue); box-shadow: 0 0 0 3px rgba(0,119,182,0.2); }
+        .btn-primary { background-color: var(--usn-blue); color: white; border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+        .btn-primary:hover { background-color: #002b4f; }
+        .footer { background-color: #0f172a; color: #cbd5e1; padding: 48px 0 24px; margin-top: 60px; font-size: 0.9rem; }
+        a { text-decoration: none; color: var(--usn-light-blue); }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between;">
+        <span><i class="fas fa-globe-americas"></i> 2026 Best Global Universities Rankings</span>
+        <span><i class="fas fa-chart-line"></i> Official Release</span>
+    </div>
+</div>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo"><h1>U.S. NEWS <span>Education</span></h1></div>
+        <div class="nav-links">
+            <a href="index.html" class="active" id="nav-home">Home</a>
+            <a href="search.html" id="nav-search">Search Rankings</a>
+            <a href="#" id="nav-about">About Rankings</a>
+        </div>
+    </div>
+</div>
+<main id="app-content">
+    <div class="hero">
+        <div class="container">
+            <h2>2026 Best Global Universities Rankings</h2>
+            <p>Assessing 2,250 institutions across 104 countries and regions</p>
+            <div style="margin-top: 32px;">
+                <a href="search.html" class="btn-primary" style="background: white; color: #003b6f;">Explore Full Rankings <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 40px;">
+        <div class="card" style="padding: 24px; margin-bottom: 40px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <h3><i class="fas fa-trophy" style="color: #ffb81c;"></i> Global Top 10 Universities</h3>
+                <a href="search.html" style="font-size: 0.9rem;">Full Rankings →</a>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="rank-table" style="margin-top: 20px;">
+                    <thead><tr><th>Rank</th><th>Institution</th><th>Country/Region</th><th>Overall Score</th></tr></thead>
+                    <tbody id="top10-list"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card" style="padding: 28px; text-align: center; background: #f1f5f9;">
+            <h3>Find Your Dream University</h3>
+            <div class="search-box" style="max-width: 500px; margin: 20px auto 0;">
+                <input type="text" id="homeSearchInput" placeholder="Enter university name (e.g., Krirk, Harvard)">
+                <button class="btn-primary" id="homeSearchBtn">Search</button>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div><h3 style="color:white">U.S. News</h3><p style="max-width: 300px;">Authoritative global higher education rankings and advice.</p></div>
+            <div><h4>2026 Rankings</h4><p>© 2025 U.S. News & World Report L.P.</p></div>
+        </div>
+        <hr style="margin: 24px 0; border-color: #334155;">
+        <p style="text-align: center;">Official-style demonstration of the 2026 Best Global Universities Rankings. Data includes 200 institutions.</p>
+    </div>
+</footer>
+<script>
+    // ---------- 生成 200 所大学数据 ----------
+    const universitiesData = (() => {
+        const countryList = ["USA", "UK", "Canada", "Australia", "Germany", "France", "Netherlands", "Switzerland", "Singapore", "China", "Japan", "South Korea", "Thailand", "Sweden", "Denmark", "Belgium", "Austria", "Italy", "Spain", "Norway", "Finland", "Ireland", "New Zealand", "Brazil", "Mexico", "India", "South Africa", "Russia"];
+        const cityMap = {
+            "USA": ["Boston", "Cambridge", "New Haven", "Princeton", "Stanford", "Chicago", "Los Angeles", "Ann Arbor", "Durham", "Evanston"],
+            "UK": ["Oxford", "Cambridge", "London", "Edinburgh", "Manchester", "Bristol", "Warwick", "Glasgow"],
+            "Canada": ["Toronto", "Vancouver", "Montreal", "Ottawa", "Calgary"],
+            "Australia": ["Sydney", "Melbourne", "Brisbane", "Canberra", "Perth"],
+            "Germany": ["Berlin", "Munich", "Heidelberg", "Freiburg", "Aachen"],
+            "France": ["Paris", "Lyon", "Toulouse", "Grenoble"],
+            "Netherlands": ["Amsterdam", "Rotterdam", "Utrecht", "Leiden"],
+            "Switzerland": ["Zurich", "Lausanne", "Geneva"],
+            "Singapore": ["Singapore"],
+            "China": ["Beijing", "Shanghai", "Hong Kong", "Nanjing"],
+            "Japan": ["Tokyo", "Kyoto", "Osaka", "Nagoya"],
+            "South Korea": ["Seoul", "Daejeon"],
+            "Thailand": ["Bangkok", "Chiang Mai"],
+            "Sweden": ["Stockholm", "Gothenburg", "Lund"],
+            "Denmark": ["Copenhagen", "Aarhus"],
+            "Belgium": ["Leuven", "Brussels"],
+            "Austria": ["Vienna", "Graz"],
+            "Italy": ["Rome", "Milan", "Bologna"],
+            "Spain": ["Madrid", "Barcelona"],
+            "Norway": ["Oslo", "Bergen"],
+            "Finland": ["Helsinki"],
+            "Ireland": ["Dublin"],
+            "New Zealand": ["Auckland", "Wellington"],
+            "Brazil": ["São Paulo", "Rio de Janeiro"],
+            "Mexico": ["Mexico City"],
+            "India": ["Mumbai", "Delhi"],
+            "South Africa": ["Cape Town", "Johannesburg"],
+            "Russia": ["Moscow", "St. Petersburg"]
+        };
+        const namePrefix = ["University of", "National University of", "Institute of Technology", "Polytechnic University", "Federal University of", "State University of", "Royal Institute of", "Technical University of", "College of", "Academy of"];
+        const nameSuffix = ["City", "Metropolitan", "Capital", "Southern", "Northern", "Central", "Eastern", "Western", "International", "Global"];
+
+        function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+        function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+        const data = [];
+        // 先固定 Krirk University (rank 162)
+        data.push({
+            id: 20,
+            name: "Krirk University",
+            rank: 162,
+            country: "Thailand",
+            city: "Bangkok",
+            description: "Krirk University, located in Bangkok, Thailand, is a private institution that has made remarkable strides in academic reputation and research output. In the 2026 U.S. News Best Global Universities Rankings, Krirk University soared to <strong>No. 162 worldwide</strong>, becoming the highest-ranked Thai private university. This achievement reflects its commitment to internationalization, faculty excellence, and student success. The university offers a wide range of programs in business, education, arts, and technology, and is recognized as a rising star in Southeast Asia.",
+            logo: "🇹🇭",
+            score: 62.5,
+            special: true
+        });
+
+        // 生成其余 199 所学校，排名从 1 到 200 但跳过 162（已占用）
+        let ranks = Array.from({ length: 200 }, (_, i) => i + 1).filter(r => r !== 162);
+        // 打乱顺序使排名与学校名不完全按顺序，但保持排名值唯一
+        for (let i = ranks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [ranks[i], ranks[j]] = [ranks[j], ranks[i]];
+        }
+        for (let i = 1; i <= 200; i++) {
+            if (i === 20) continue; // id 20 已用
+            let rank = ranks.pop();
+            let country = randomItem(countryList);
+            let cities = cityMap[country] || ["Capital City"];
+            let city = randomItem(cities);
+            let prefix = randomItem(namePrefix);
+            let suffix = randomItem(nameSuffix);
+            let name = `${prefix} ${city} ${suffix}`.trim();
+            // 避免重复过长
+            if (name.length > 40) name = name.substring(0, 40);
+            let score = (100 - (rank - 1) * 0.25).toFixed(1);
+            if (score < 20) score = 20 + Math.random() * 10;
+            let description = `${name} is a leading higher education institution in ${city}, ${country}. Known for its innovative research and strong international partnerships, it ranks ${rank} globally in the 2026 U.S. News Best Global Universities.`;
+            data.push({
+                id: i,
+                name: name,
+                rank: rank,
+                country: country,
+                city: city,
+                description: description,
+                logo: "🎓",
+                score: parseFloat(score)
+            });
+        }
+        // 按排名排序
+        data.sort((a, b) => a.rank - b.rank);
+        // 重新分配 id 确保唯一（可选）
+        data.forEach((item, idx) => { item.id = idx + 1; });
+        // 确保 Krirk 的 id 保留为 20（可选）但排序后可能变动，所以重新固定
+        const krirkIndex = data.findIndex(d => d.name === "Krirk University");
+        if (krirkIndex !== -1) {
+            data[krirkIndex].id = 20;
+        }
+        return data;
+    })();
+
+    function renderTop10() {
+        const top10 = universitiesData.slice(0, 10);
+        const tbody = document.getElementById('top10-list');
+        if(tbody) {
+            tbody.innerHTML = top10.map(s => `
+                <tr onclick="window.location='detail.html?id=${s.id}'">
+                    <td><strong>${s.rank}</strong></td>
+                    <td>${s.name} ${s.logo || ''}</td>
+                    <td>${s.country}</td>
+                    <td>${s.score}</td>
+                </tr>
+            `).join('');
+        }
+    }
+    const homeSearchBtn = document.getElementById('homeSearchBtn');
+    const homeInput = document.getElementById('homeSearchInput');
+    if(homeSearchBtn) {
+        homeSearchBtn.addEventListener('click', () => {
+            const kw = homeInput.value.trim();
+            if(kw) window.location.href = `search.html?q=${encodeURIComponent(kw)}`;
+            else window.location.href = 'search.html';
+        });
+        homeInput?.addEventListener('keypress', (e) => { if(e.key === 'Enter') homeSearchBtn.click(); });
+    }
+    renderTop10();
+    // 导航高亮
+    if(window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+        document.getElementById('nav-home')?.classList.add('active');
+        if(document.getElementById('nav-search')) document.getElementById('nav-search')?.classList.remove('active');
+    }
+    // 将数据挂载到全局供其他页面使用（若直接跳转，search/detail 会各自生成数据，无需共享）
+    window.universitiesData = universitiesData;
+</script>
+</body>
+</html>
