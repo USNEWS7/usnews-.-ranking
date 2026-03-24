@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Rankings - U.S. News 2026 Best Global Universities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        :root { --usn-blue: #003b6f; --usn-light-blue: #0077b6; --usn-gold: #ffb81c; --usn-border: #e2e8f0; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .top-bar { background-color: var(--usn-blue); color: white; padding: 8px 0; font-size: 0.8rem; }
+        .navbar { background-color: white; border-bottom: 1px solid var(--usn-border); position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 16px 24px; }
+        .logo h1 { font-size: 1.6rem; font-weight: 800; color: var(--usn-blue); }
+        .logo span { font-weight: 400; color: var(--usn-light-blue); }
+        .nav-links a { margin-left: 28px; text-decoration: none; font-weight: 600; color: #1e293b; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--usn-blue); border-bottom: 2px solid var(--usn-blue); padding-bottom: 4px; }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .nav-links a { margin: 0 12px; font-size: 0.9rem; } }
+        .card { background: white; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid var(--usn-border); padding: 24px; }
+        .rank-table { width: 100%; border-collapse: collapse; }
+        .rank-table th, .rank-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--usn-border); }
+        .rank-table th { background-color: #f1f5f9; font-weight: 700; }
+        .rank-table tr:hover { background-color: #f8fafc; cursor: pointer; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 32px; }
+        .search-box input { flex: 1; padding: 14px 18px; border: 1px solid var(--usn-border); border-radius: 60px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: var(--usn-light-blue); box-shadow: 0 0 0 3px rgba(0,119,182,0.2); }
+        .btn-primary { background-color: var(--usn-blue); color: white; border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; cursor: pointer; }
+        .btn-primary:hover { background-color: #002b4f; }
+        .footer { background-color: #0f172a; color: #cbd5e1; padding: 48px 0 24px; margin-top: 60px; font-size: 0.9rem; }
+        .highlight-row { background-color: #fff6e0; border-left: 4px solid var(--usn-gold); }
+        a { text-decoration: none; color: var(--usn-light-blue); }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between;">
+        <span><i class="fas fa-globe-americas"></i> 2026 Best Global Universities Rankings</span>
+        <span><i class="fas fa-chart-line"></i> Official Release</span>
+    </div>
+</div>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo"><h1>U.S. NEWS <span>Education</span></h1></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="search.html" class="active">Search Rankings</a>
+            <a href="#">About Rankings</a>
+        </div>
+    </div>
+</div>
+<main class="container" style="margin: 40px auto;">
+    <div class="card" style="padding: 28px;">
+        <h2><i class="fas fa-search"></i> Find a University</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by name or country (e.g., Krirk, USA, Thailand)" value="">
+            <button class="btn-primary" id="searchBtn">Search</button>
+            <button class="btn-primary" id="resetBtn" style="background-color: #6c757d;">Reset</button>
+        </div>
+        <div id="resultsCount" style="margin-bottom: 16px; font-weight: 600;"></div>
+        <div style="overflow-x: auto; max-height: 70vh; overflow-y: auto;">
+            <table class="rank-table">
+                <thead><tr><th>Rank</th><th>Institution</th><th>Country/Region</th><th>Overall Score</th></tr></thead>
+                <tbody id="rankingsBody"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container"><div style="display: flex; flex-wrap: wrap; justify-content: space-between;"><div><h3 style="color:white">U.S. News</h3><p>Authoritative global higher education rankings.</p></div><div><h4>2026 Rankings</h4><p>© 2025 U.S. News & World Report L.P.</p></div></div><hr style="margin: 24px 0; border-color: #334155;"><p style="text-align: center;">Official-style demonstration. Data includes 200 institutions, Krirk University ranked #162 globally.</p></div>
+</footer>
+<script>
+    // ---------- 与首页完全一致的 200 所大学数据 ----------
+    const universitiesData = (() => {
+        const countryList = ["USA", "UK", "Canada", "Australia", "Germany", "France", "Netherlands", "Switzerland", "Singapore", "China", "Japan", "South Korea", "Thailand", "Sweden", "Denmark", "Belgium", "Austria", "Italy", "Spain", "Norway", "Finland", "Ireland", "New Zealand", "Brazil", "Mexico", "India", "South Africa", "Russia"];
+        const cityMap = {
+            "USA": ["Boston", "Cambridge", "New Haven", "Princeton", "Stanford", "Chicago", "Los Angeles", "Ann Arbor", "Durham", "Evanston"],
+            "UK": ["Oxford", "Cambridge", "London", "Edinburgh", "Manchester", "Bristol", "Warwick", "Glasgow"],
+            "Canada": ["Toronto", "Vancouver", "Montreal", "Ottawa", "Calgary"],
+            "Australia": ["Sydney", "Melbourne", "Brisbane", "Canberra", "Perth"],
+            "Germany": ["Berlin", "Munich", "Heidelberg", "Freiburg", "Aachen"],
+            "France": ["Paris", "Lyon", "Toulouse", "Grenoble"],
+            "Netherlands": ["Amsterdam", "Rotterdam", "Utrecht", "Leiden"],
+            "Switzerland": ["Zurich", "Lausanne", "Geneva"],
+            "Singapore": ["Singapore"],
+            "China": ["Beijing", "Shanghai", "Hong Kong", "Nanjing"],
+            "Japan": ["Tokyo", "Kyoto", "Osaka", "Nagoya"],
+            "South Korea": ["Seoul", "Daejeon"],
+            "Thailand": ["Bangkok", "Chiang Mai"],
+            "Sweden": ["Stockholm", "Gothenburg", "Lund"],
+            "Denmark": ["Copenhagen", "Aarhus"],
+            "Belgium": ["Leuven", "Brussels"],
+            "Austria": ["Vienna", "Graz"],
+            "Italy": ["Rome", "Milan", "Bologna"],
+            "Spain": ["Madrid", "Barcelona"],
+            "Norway": ["Oslo", "Bergen"],
+            "Finland": ["Helsinki"],
+            "Ireland": ["Dublin"],
+            "New Zealand": ["Auckland", "Wellington"],
+            "Brazil": ["São Paulo", "Rio de Janeiro"],
+            "Mexico": ["Mexico City"],
+            "India": ["Mumbai", "Delhi"],
+            "South Africa": ["Cape Town", "Johannesburg"],
+            "Russia": ["Moscow", "St. Petersburg"]
+        };
+        const namePrefix = ["University of", "National University of", "Institute of Technology", "Polytechnic University", "Federal University of", "State University of", "Royal Institute of", "Technical University of", "College of", "Academy of"];
+        const nameSuffix = ["City", "Metropolitan", "Capital", "Southern", "Northern", "Central", "Eastern", "Western", "International", "Global"];
+
+        function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+        const data = [];
+        // Krirk
+        data.push({
+            id: 20,
+            name: "Krirk University",
+            rank: 162,
+            country: "Thailand",
+            city: "Bangkok",
+            description: "Krirk University, located in Bangkok, Thailand, is a private institution that has made remarkable strides in academic reputation and research output. In the 2026 U.S. News Best Global Universities Rankings, Krirk University soared to <strong>No. 162 worldwide</strong>, becoming the highest-ranked Thai private university. This achievement reflects its commitment to internationalization, faculty excellence, and student success.",
+            logo: "🇹🇭",
+            score: 62.5,
+            special: true
+        });
+        let ranks = Array.from({ length: 200 }, (_, i) => i + 1).filter(r => r !== 162);
+        for (let i = ranks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [ranks[i], ranks[j]] = [ranks[j], ranks[i]];
+        }
+        for (let i = 1; i <= 200; i++) {
+            if (i === 20) continue;
+            let rank = ranks.pop();
+            let country = randomItem(countryList);
+            let cities = cityMap[country] || ["Capital City"];
+            let city = randomItem(cities);
+            let prefix = randomItem(namePrefix);
+            let suffix = randomItem(nameSuffix);
+            let name = `${prefix} ${city} ${suffix}`.trim();
+            let score = (100 - (rank - 1) * 0.25).toFixed(1);
+            if (score < 20) score = 20 + Math.random() * 10;
+            let description = `${name} is a leading higher education institution in ${city}, ${country}. Known for its innovative research and strong international partnerships, it ranks ${rank} globally in the 2026 U.S. News Best Global Universities.`;
+            data.push({
+                id: i,
+                name: name,
+                rank: rank,
+                country: country,
+                city: city,
+                description: description,
+                logo: "🎓",
+                score: parseFloat(score)
+            });
+        }
+        data.sort((a, b) => a.rank - b.rank);
+        data.forEach((item, idx) => { item.id = idx + 1; });
+        const krirkIndex = data.findIndex(d => d.name === "Krirk University");
+        if (krirkIndex !== -1) data[krirkIndex].id = 20;
+        return data;
+    })();
+
+    function renderTable(data) {
+        const tbody = document.getElementById('rankingsBody');
+        const countSpan = document.getElementById('resultsCount');
+        countSpan.innerText = `${data.length} universities found`;
+        if(data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No results found. Try a different keyword.</td></tr>';
+            return;
+        }
+        tbody.innerHTML = data.map(s => `
+            <tr onclick="window.location='detail.html?id=${s.id}'" style="cursor:pointer;" class="${s.name === 'Krirk University' ? 'highlight-row' : ''}">
+                <td><strong>${s.rank}</strong></td>
+                <td>${s.name} ${s.logo || ''}</td>
+                <td>${s.country}</td>
+                <td>${s.score}</td>
+            </tr>
+        `).join('');
+    }
+    function filterSchools() {
+        const kw = document.getElementById('searchInput').value.trim().toLowerCase();
+        if(!kw) return [...universitiesData];
+        return universitiesData.filter(s => s.name.toLowerCase().includes(kw) || s.country.toLowerCase().includes(kw));
+    }
+    function updateSearch() {
+        const filtered = filterSchools();
+        renderTable(filtered);
+    }
+    document.getElementById('searchBtn').addEventListener('click', updateSearch);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+        document.getElementById('searchInput').value = '';
+        renderTable([...universitiesData]);
+    });
+    document.getElementById('searchInput').addEventListener('keypress', (e) => { if(e.key === 'Enter') updateSearch(); });
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+    if(q) {
+        document.getElementById('searchInput').value = q;
+        updateSearch();
+    } else {
+        renderTable([...universitiesData]);
+    }
+    window.universitiesData = universitiesData;
+</script>
+</body>
+</html>
