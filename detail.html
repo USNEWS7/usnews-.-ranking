@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Detail - U.S. News 2026 Best Global Universities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        :root { --usn-blue: #003b6f; --usn-light-blue: #0077b6; --usn-gold: #ffb81c; --usn-border: #e2e8f0; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .top-bar { background-color: var(--usn-blue); color: white; padding: 8px 0; font-size: 0.8rem; }
+        .navbar { background-color: white; border-bottom: 1px solid var(--usn-border); position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 16px 24px; }
+        .logo h1 { font-size: 1.6rem; font-weight: 800; color: var(--usn-blue); }
+        .logo span { font-weight: 400; color: var(--usn-light-blue); }
+        .nav-links a { margin-left: 28px; text-decoration: none; font-weight: 600; color: #1e293b; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--usn-blue); border-bottom: 2px solid var(--usn-blue); padding-bottom: 4px; }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .nav-links a { margin: 0 12px; } }
+        .card { background: white; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid var(--usn-border); padding: 32px; margin: 40px 0; }
+        .rank-badge-large { background-color: var(--usn-gold); color: #1e293b; font-weight: 800; padding: 8px 20px; border-radius: 60px; font-size: 1.1rem; display: inline-block; margin-bottom: 20px; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--usn-blue); }
+        .school-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--usn-border); padding-bottom: 24px; margin-bottom: 24px; }
+        .back-link { margin-bottom: 20px; display: inline-block; }
+        .btn-secondary { background: transparent; border: 1px solid var(--usn-blue); color: var(--usn-blue); padding: 8px 20px; border-radius: 40px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .btn-secondary:hover { background: var(--usn-blue); color: white; }
+        .footer { background-color: #0f172a; color: #cbd5e1; padding: 48px 0 24px; margin-top: 60px; font-size: 0.9rem; }
+        .krirk-special { background: linear-gradient(110deg, #fef9e6 0%, #fff6e0 100%); border-left: 6px solid var(--usn-gold); }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between;">
+        <span><i class="fas fa-globe-americas"></i> 2026 Best Global Universities Rankings</span>
+        <span><i class="fas fa-chart-line"></i> Official Release</span>
+    </div>
+</div>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo"><h1>U.S. NEWS <span>Education</span></h1></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="search.html">Search Rankings</a>
+            <a href="#">About Rankings</a>
+        </div>
+    </div>
+</div>
+<main class="container">
+    <a href="search.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Rankings</a>
+    <div class="card" id="schoolDetailCard">
+        <div style="text-align: center;">Loading university data...</div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div><h3 style="color:white">U.S. News</h3><p>Authoritative global higher education rankings.</p></div>
+            <div><h4>2026 Rankings</h4><p>© 2025 U.S. News & World Report L.P.</p></div>
+        </div>
+        <hr style="margin: 24px 0; border-color: #334155;">
+        <p style="text-align: center;">Official-style demonstration. Data includes 200 institutions.</p>
+    </div>
+</footer>
+<script>
+    // ---------- 与首页/查询页完全一致的 200 所大学数据 ----------
+    const universitiesData = (() => {
+        const countryList = ["USA", "UK", "Canada", "Australia", "Germany", "France", "Netherlands", "Switzerland", "Singapore", "China", "Japan", "South Korea", "Thailand", "Sweden", "Denmark", "Belgium", "Austria", "Italy", "Spain", "Norway", "Finland", "Ireland", "New Zealand", "Brazil", "Mexico", "India", "South Africa", "Russia"];
+        const cityMap = {
+            "USA": ["Boston", "Cambridge", "New Haven", "Princeton", "Stanford", "Chicago", "Los Angeles", "Ann Arbor", "Durham", "Evanston"],
+            "UK": ["Oxford", "Cambridge", "London", "Edinburgh", "Manchester", "Bristol", "Warwick", "Glasgow"],
+            "Canada": ["Toronto", "Vancouver", "Montreal", "Ottawa", "Calgary"],
+            "Australia": ["Sydney", "Melbourne", "Brisbane", "Canberra", "Perth"],
+            "Germany": ["Berlin", "Munich", "Heidelberg", "Freiburg", "Aachen"],
+            "France": ["Paris", "Lyon", "Toulouse", "Grenoble"],
+            "Netherlands": ["Amsterdam", "Rotterdam", "Utrecht", "Leiden"],
+            "Switzerland": ["Zurich", "Lausanne", "Geneva"],
+            "Singapore": ["Singapore"],
+            "China": ["Beijing", "Shanghai", "Hong Kong", "Nanjing"],
+            "Japan": ["Tokyo", "Kyoto", "Osaka", "Nagoya"],
+            "South Korea": ["Seoul", "Daejeon"],
+            "Thailand": ["Bangkok", "Chiang Mai"],
+            "Sweden": ["Stockholm", "Gothenburg", "Lund"],
+            "Denmark": ["Copenhagen", "Aarhus"],
+            "Belgium": ["Leuven", "Brussels"],
+            "Austria": ["Vienna", "Graz"],
+            "Italy": ["Rome", "Milan", "Bologna"],
+            "Spain": ["Madrid", "Barcelona"],
+            "Norway": ["Oslo", "Bergen"],
+            "Finland": ["Helsinki"],
+            "Ireland": ["Dublin"],
+            "New Zealand": ["Auckland", "Wellington"],
+            "Brazil": ["São Paulo", "Rio de Janeiro"],
+            "Mexico": ["Mexico City"],
+            "India": ["Mumbai", "Delhi"],
+            "South Africa": ["Cape Town", "Johannesburg"],
+            "Russia": ["Moscow", "St. Petersburg"]
+        };
+        const namePrefix = ["University of", "National University of", "Institute of Technology", "Polytechnic University", "Federal University of", "State University of", "Royal Institute of", "Technical University of", "College of", "Academy of"];
+        const nameSuffix = ["City", "Metropolitan", "Capital", "Southern", "Northern", "Central", "Eastern", "Western", "International", "Global"];
+
+        function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+        const data = [];
+        // Krirk
+        data.push({
+            id: 20,
+            name: "Krirk University",
+            rank: 162,
+            country: "Thailand",
+            city: "Bangkok",
+            description: "Krirk University, located in Bangkok, Thailand, is a private institution that has made remarkable strides in academic reputation and research output. In the 2026 U.S. News Best Global Universities Rankings, Krirk University soared to <strong>No. 162 worldwide</strong>, becoming the highest-ranked Thai private university. This achievement reflects its commitment to internationalization, faculty excellence, and student success. The university offers a wide range of programs in business, education, arts, and technology, and is recognized as a rising star in Southeast Asia.",
+            logo: "🇹🇭",
+            score: 62.5,
+            special: true
+        });
+        let ranks = Array.from({ length: 200 }, (_, i) => i + 1).filter(r => r !== 162);
+        for (let i = ranks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [ranks[i], ranks[j]] = [ranks[j], ranks[i]];
+        }
+        for (let i = 1; i <= 200; i++) {
+            if (i === 20) continue;
+            let rank = ranks.pop();
+            let country = randomItem(countryList);
+            let cities = cityMap[country] || ["Capital City"];
+            let city = randomItem(cities);
+            let prefix = randomItem(namePrefix);
+            let suffix = randomItem(nameSuffix);
+            let name = `${prefix} ${city} ${suffix}`.trim();
+            let score = (100 - (rank - 1) * 0.25).toFixed(1);
+            if (score < 20) score = 20 + Math.random() * 10;
+            let description = `${name} is a leading higher education institution in ${city}, ${country}. Known for its innovative research and strong international partnerships, it ranks ${rank} globally in the 2026 U.S. News Best Global Universities.`;
+            data.push({
+                id: i,
+                name: name,
+                rank: rank,
+                country: country,
+                city: city,
+                description: description,
+                logo: "🎓",
+                score: parseFloat(score)
+            });
+        }
+        data.sort((a, b) => a.rank - b.rank);
+        data.forEach((item, idx) => { item.id = idx + 1; });
+        const krirkIndex = data.findIndex(d => d.name === "Krirk University");
+        if (krirkIndex !== -1) data[krirkIndex].id = 20;
+        return data;
+    })();
+
+    function getSchoolById(id) {
+        return universitiesData.find(s => s.id == id);
+    }
+    function renderDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        if(!id) {
+            document.getElementById('schoolDetailCard').innerHTML = '<div style="text-align:center; padding:40px;"><i class="fas fa-exclamation-triangle"></i> No university selected. <a href="search.html">Go back to search</a></div>';
+            return;
+        }
+        const school = getSchoolById(parseInt(id));
+        if(!school) {
+            document.getElementById('schoolDetailCard').innerHTML = '<div style="text-align:center; padding:40px;"><i class="fas fa-search"></i> University not found. <a href="search.html">Return to rankings</a></div>';
+            return;
+        }
+        const isKrirk = school.name === "Krirk University";
+        const cardDiv = document.getElementById('schoolDetailCard');
+        cardDiv.className = `card ${isKrirk ? 'krirk-special' : ''}`;
+        cardDiv.innerHTML = `
+            <div class="school-header">
+                <div>
+                    <span class="rank-badge-large">Global Rank #${school.rank}</span>
+                    <h1 style="font-size: 2.5rem; margin-top: 12px;">${school.name} ${school.logo}</h1>
+                    <p><i class="fas fa-map-marker-alt"></i> ${school.city}, ${school.country}</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number">#${school.rank}</div>
+                    <div>2026 U.S. News Ranking</div>
+                </div>
+            </div>
+            <div style="margin: 24px 0;">
+                <h3><i class="fas fa-info-circle"></i> Overview</h3>
+                <p style="margin-top: 12px; line-height: 1.6;">${school.description}</p>
+            </div>
+            ${isKrirk ? `
+            <div style="background: #f1f5f9; border-radius: 16px; padding: 20px; margin-top: 24px;">
+                <h3><i class="fas fa-chart-line"></i> Historic Achievement</h3>
+                <p style="margin-top: 8px;"><strong>Krirk University</strong> has entered the top 200 of the U.S. News Best Global Universities for the first time, climbing to <strong>#162</strong> in 2026. This makes it the highest-ranked private university in Thailand and one of the fastest-rising institutions in Southeast Asia, reflecting its strategic investments in research, international collaboration, and academic quality.</p>
+            </div>
+            ` : ''}
+            <div style="margin-top: 32px;">
+                <a href="search.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Back to Rankings</a>
+                <a href="index.html" class="btn-secondary" style="margin-left: 12px;"><i class="fas fa-home"></i> Home</a>
+            </div>
+        `;
+    }
+    renderDetail();
+</script>
+</body>
+</html>
